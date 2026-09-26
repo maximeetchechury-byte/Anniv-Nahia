@@ -249,15 +249,6 @@
   </div>
 
 <script>
-  /* =========================================================
-     CONFIGURATION — à faire une seule fois avant de publier
-     =========================================================
-     1. Va sur https://getpantry.cloud
-     2. Clique sur "Create a Pantry", donne un nom (ex: "nahia-anniv")
-        et une adresse email (juste pour retrouver ton panier, pas de mot de passe).
-     3. Tu obtiens un "Pantry ID" (une longue chaîne de caractères).
-     4. Colle-le ci-dessous à la place de "COLLE_TON_PANTRY_ID_ICI".
-     ========================================================= */
   const PANTRY_ID = "e5881c5a-a0ac-4ab8-ab16-0cad4b3b8236";
   const BASKET_NAME = "invites-nahia";
   const BASE_URL = `https://getpantry.cloud/apiv1/pantry/${PANTRY_ID}/basket/${BASKET_NAME}`;
@@ -273,6 +264,8 @@
   const btnYes = document.getElementById('btnYes');
   const btnNo = document.getElementById('btnNo');
 
+  let guestsCache = [];
+
   function setStatus(msg, isError){
     statusEl.textContent = msg;
     statusEl.style.color = isError ? '#B5533C' : '';
@@ -283,7 +276,6 @@
     try{
       const res = await fetch(BASE_URL);
       if(!res.ok){
-        // Le panier n'existe pas encore : on le crée vide.
         await fetch(BASE_URL, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -353,13 +345,13 @@
     btnNo.disabled = true;
     setStatus('Enregistrement...');
     try{
-      const guests = await loadGuests();
-      const filtered = guests.filter(g => g.key !== key);
+      const filtered = guestsCache.filter(g => g.key !== key);
       filtered.push({ key, name: fullName, status, ts: Date.now() });
       const ok = await saveGuests(filtered);
       if(!ok){
-        setStatus("Oups, l'enregistrement a échoué. Réessaie.", true);
+        setStatus("Oups, l'enregistrement a échoué (le service est peut-être temporairement saturé). Réessaie dans quelques secondes.", true);
       } else {
+        guestsCache = filtered;
         renderGuests(filtered);
         setStatus(status === 'yes'
           ? `Merci ${prenom}, on t'attend le 24 octobre !`
@@ -381,8 +373,8 @@
       setStatus("Configuration en attente (voir commentaire dans le code).", true);
       return;
     }
-    const guests = await loadGuests();
-    renderGuests(guests);
+    guestsCache = await loadGuests();
+    renderGuests(guestsCache);
   })();
 </script>
 </body>
