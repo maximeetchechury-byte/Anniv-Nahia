@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anniversaire de Nahia — 20 ans</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Caveat:wght@600;700&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F5EEDC;
+    --olive-deep:#454F31;
+    --olive:#6B7048;
+    --olive-mid:#828A5C;
+    --olive-pale:#CBCFA9;
+    --coral:#C8794A;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:'Quicksand',sans-serif;
+    background:var(--olive);
+    background-image: radial-gradient(var(--cream) 6px, transparent 6.5px);
+    background-size:40px 40px;
+    background-position:-6px -6px;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    padding:40px 16px;
+  }
+  .page{
+    width:100%;
+    max-width:640px;
+    background:var(--cream);
+    border-radius:8px;
+    box-shadow:0 0 0 2px rgba(69,79,49,0.15), 0 20px 50px rgba(0,0,0,0.25);
+    overflow:hidden;
+  }
+
+  /* ---- HERO ---- */
+  .hero{padding:56px 40px 40px;text-align:center;position:relative;}
+  .crown{margin:0 auto 10px;display:block;}
+  .hero h1{
+    font-family:'Baloo 2';font-weight:800;color:var(--olive-deep);
+    font-size:56px;line-height:0.98;letter-spacing:-1px;margin:0;
+  }
+  .hero .name{
+    font-family:'Caveat';font-weight:700;color:var(--olive);
+    font-size:52px;margin-top:6px;transform:rotate(-2deg);display:inline-block;
+  }
+  .hero .age{
+    margin-top:18px;font-family:'Quicksand';font-weight:700;
+    letter-spacing:.18em;color:var(--olive-mid);font-size:17px;
+  }
+
+  .divider{display:flex;align-items:center;justify-content:center;gap:14px;margin:0 40px;}
+  .divider .line{flex:1;height:2px;background:var(--olive-pale);}
+  .divider svg{flex-shrink:0;}
+
+  /* ---- INFO STRIP ---- */
+  .info-strip{
+    display:flex;
+    padding:32px 20px;
+    gap:10px;
+  }
+  .info-item{
+    flex:1;text-align:center;padding:8px 6px;
+  }
+  .info-item .label{
+    font-family:'Quicksand';font-weight:700;font-size:12px;letter-spacing:.14em;
+    color:var(--olive-mid);
+  }
+  .info-item .value{
+    font-family:'Baloo 2';font-weight:800;font-size:24px;color:var(--olive-deep);
+    margin-top:6px;line-height:1.1;
+  }
+
+  /* ---- SECTIONS ---- */
+  section.block{padding:34px 40px;}
+  section.block h2{
+    font-family:'Baloo 2';font-weight:800;color:var(--olive-deep);
+    font-size:26px;margin:0 0 12px;
+  }
+  .teaser{
+    background:var(--olive-pale);
+    border-radius:10px;
+    padding:22px 22px;
+    text-align:center;
+    color:var(--olive-deep);
+  }
+  .teaser .big{
+    font-family:'Caveat';font-weight:700;font-size:30px;
+    transform:rotate(-1deg);display:inline-block;
+  }
+  .teaser .small{
+    font-family:'Quicksand';font-weight:500;font-size:15px;
+    color:var(--olive);margin-top:6px;
+  }
+
+  /* ---- RSVP ---- */
+  .rsvp-form{
+    display:flex;flex-direction:column;gap:12px;
+  }
+  .rsvp-form .names{display:flex;gap:10px;}
+  .rsvp-form input{
+    flex:1;font-family:'Quicksand';font-weight:700;font-size:16px;
+    padding:13px 14px;border-radius:8px;border:2px solid var(--olive-pale);
+    background:#fff;color:var(--olive-deep);outline:none;
+  }
+  .rsvp-form input:focus{border-color:var(--olive);}
+  .rsvp-buttons{display:flex;gap:10px;margin-top:2px;}
+  .rsvp-buttons button{
+    flex:1;font-family:'Quicksand';font-weight:700;font-size:15px;
+    padding:14px 10px;border-radius:8px;border:2px solid transparent;
+    cursor:pointer;transition:transform .12s ease, opacity .12s ease;
+  }
+  .rsvp-buttons button:active{transform:scale(0.97);}
+  .rsvp-buttons button:disabled{opacity:.6;cursor:default;}
+  .btn-yes{background:var(--olive-deep);color:var(--cream);}
+  .btn-yes:hover{opacity:.9;}
+  .btn-no{background:transparent;color:var(--olive-deep);border-color:var(--olive-pale);}
+  .btn-no:hover{border-color:var(--olive-mid);}
+
+  .rsvp-status{
+    font-family:'Quicksand';font-weight:700;font-size:14px;
+    text-align:center;min-height:20px;margin-top:2px;color:var(--olive);
+  }
+
+  .guest-lists{display:flex;gap:20px;margin-top:26px;}
+  .guest-col{flex:1;}
+  .guest-col h3{
+    font-family:'Quicksand';font-weight:700;font-size:13px;letter-spacing:.1em;
+    color:var(--olive-mid);margin:0 0 10px;
+    display:flex;align-items:center;gap:6px;
+  }
+  .guest-col h3 .count{
+    background:var(--olive-pale);color:var(--olive-deep);
+    border-radius:20px;padding:1px 9px;font-size:12px;
+  }
+  .guest-col ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px;}
+  .guest-col li{
+    font-family:'Caveat';font-weight:600;font-size:19px;color:var(--olive-deep);
+    background:rgba(255,255,255,0.55);border-radius:6px;padding:6px 10px;
+  }
+  .guest-col .empty{
+    font-family:'Quicksand';font-size:13px;color:var(--olive-mid);font-style:normal;
+    padding:6px 2px;
+  }
+
+  /* ---- FOOTER ---- */
+  .signoff{
+    text-align:center;padding:30px 40px 44px;
+    font-family:'Caveat';font-weight:600;color:var(--olive-deep);
+    font-size:26px;
+  }
+
+  @media (max-width:480px){
+    .hero{padding:44px 24px 32px;}
+    .hero h1{font-size:44px;}
+    .hero .name{font-size:40px;}
+    .info-strip{flex-direction:column;gap:16px;padding:26px 24px;}
+    section.block{padding:28px 24px;}
+    .rsvp-form .names{flex-direction:column;}
+    .guest-lists{flex-direction:column;}
+  }
+</style>
+</head>
+<body>
+  <div class="page">
+
+    <div class="hero">
+      <svg class="crown" width="52" height="34" viewBox="0 0 46 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 24L2 9L13 17L23 3L33 17L44 9L42 24H4Z" stroke="#6B7048" stroke-width="2.4" stroke-linejoin="round"/>
+      </svg>
+      <h1>Happy Birthday</h1>
+      <div class="name">Nahia Huguet</div>
+      <div class="age">20 ANS — ÇA SE FÊTE !</div>
+    </div>
+
+    <div class="divider">
+      <div class="line"></div>
+      <svg width="18" height="16" viewBox="0 0 14 13"><path d="M7 12.3C3 9.6 0.8 7.3 0.8 4.6 0.8 2.5 2.4 1 4.3 1 5.4 1 6.4 1.6 7 2.5 7.6 1.6 8.6 1 9.7 1 11.6 1 13.2 2.5 13.2 4.6 13.2 7.3 11 9.6 7 12.3Z" fill="#828A5C"/></svg>
+      <div class="line"></div>
+    </div>
+
+    <div class="info-strip">
+      <div class="info-item">
+        <div class="label">QUAND</div>
+        <div class="value">24 oct.</div>
+      </div>
+      <div class="info-item">
+        <div class="label">HEURE</div>
+        <div class="value">12h</div>
+      </div>
+      <div class="info-item">
+        <div class="label">OÙ</div>
+        <div class="value">Peyrehorade</div>
+      </div>
+    </div>
+
+    <div class="divider"><div class="line" style="background:var(--olive-pale);"></div></div>
+
+    <section class="block">
+      <h2>Le programme</h2>
+      <div class="teaser">
+        <div class="big">Ça se prépare...</div>
+        <div class="small">Le détail de l'après-midi arrive très bientôt — revenez faire un tour par ici !</div>
+      </div>
+    </section>
+
+    <section class="block" style="padding-top:0;">
+      <h2>Le thème</h2>
+      <div class="teaser">
+        <div class="big">Surprise !</div>
+        <div class="small">Le thème sera annoncé prochainement. Restez curieux 👀</div>
+      </div>
+    </section>
+
+    <div class="divider"><div class="line" style="background:var(--olive-pale);"></div></div>
+
+    <section class="block">
+      <h2>Vous venez ?</h2>
+      <div class="rsvp-form">
+        <div class="names">
+          <input type="text" id="prenom" placeholder="Prénom" autocomplete="given-name">
+          <input type="text" id="nom" placeholder="Nom" autocomplete="family-name">
+        </div>
+        <div class="rsvp-buttons">
+          <button class="btn-yes" id="btnYes">Je serai là 🎉</button>
+          <button class="btn-no" id="btnNo">Malheureusement non</button>
+        </div>
+        <div class="rsvp-status" id="status"></div>
+      </div>
+
+      <div class="guest-lists">
+        <div class="guest-col">
+          <h3>Présents <span class="count" id="countYes">0</span></h3>
+          <ul id="listYes"></ul>
+        </div>
+        <div class="guest-col">
+          <h3>Absents <span class="count" id="countNo">0</span></h3>
+          <ul id="listNo"></ul>
+        </div>
+      </div>
+    </section>
+
+    <div class="signoff">À très vite ! 💚</div>
+  </div>
+
+<script>
+  /* =========================================================
+     CONFIGURATION — à faire une seule fois avant de publier
+     =========================================================
+     1. Va sur https://getpantry.cloud
+     2. Clique sur "Create a Pantry", donne un nom (ex: "nahia-anniv")
+        et une adresse email (juste pour retrouver ton panier, pas de mot de passe).
+     3. Tu obtiens un "Pantry ID" (une longue chaîne de caractères).
+     4. Colle-le ci-dessous à la place de "COLLE_TON_PANTRY_ID_ICI".
+     ========================================================= */
+  const PANTRY_ID = "e5881c5a-a0ac-4ab8-ab16-0cad4b3b8236";
+  const BASKET_NAME = "invites-nahia";
+  const BASE_URL = `https://getpantry.cloud/apiv1/pantry/${PANTRY_ID}/basket/${BASKET_NAME}`;
+  const CONFIGURED = PANTRY_ID && PANTRY_ID !== "COLLE_TON_PANTRY_ID_ICI";
+
+  const statusEl = document.getElementById('status');
+  const prenomEl = document.getElementById('prenom');
+  const nomEl = document.getElementById('nom');
+  const listYesEl = document.getElementById('listYes');
+  const listNoEl = document.getElementById('listNo');
+  const countYesEl = document.getElementById('countYes');
+  const countNoEl = document.getElementById('countNo');
+  const btnYes = document.getElementById('btnYes');
+  const btnNo = document.getElementById('btnNo');
+
+  function setStatus(msg, isError){
+    statusEl.textContent = msg;
+    statusEl.style.color = isError ? '#B5533C' : '';
+  }
+
+  async function loadGuests(){
+    if(!CONFIGURED) return [];
+    try{
+      const res = await fetch(BASE_URL);
+      if(!res.ok){
+        // Le panier n'existe pas encore : on le crée vide.
+        await fetch(BASE_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ list: [] })
+        });
+        return [];
+      }
+      const data = await res.json();
+      return Array.isArray(data.list) ? data.list : [];
+    }catch(e){
+      return [];
+    }
+  }
+
+  async function saveGuests(list){
+    const res = await fetch(BASE_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ list })
+    });
+    return res.ok;
+  }
+
+  function renderGuests(guests){
+    const yes = guests.filter(g => g.status === 'yes');
+    const no = guests.filter(g => g.status === 'no');
+
+    countYesEl.textContent = yes.length;
+    countNoEl.textContent = no.length;
+
+    listYesEl.innerHTML = yes.length
+      ? yes.map(g => `<li>${escapeHtml(g.name)}</li>`).join('')
+      : '<li class="empty">Personne pour l\'instant — soyez le premier !</li>';
+
+    listNoEl.innerHTML = no.length
+      ? no.map(g => `<li>${escapeHtml(g.name)}</li>`).join('')
+      : '<li class="empty">Aucune excuse pour l\'instant 😉</li>';
+  }
+
+  function escapeHtml(str){
+    const d = document.createElement('div');
+    d.textContent = str;
+    return d.innerHTML;
+  }
+
+  function slugify(str){
+    return str.trim().toLowerCase()
+      .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+      .replace(/[^a-z0-9]+/g, '-');
+  }
+
+  async function submitRsvp(status){
+    if(!CONFIGURED){
+      setStatus("Le formulaire n'est pas encore configuré (Pantry ID manquant).", true);
+      return;
+    }
+    const prenom = prenomEl.value.trim();
+    const nom = nomEl.value.trim();
+    if(!prenom || !nom){
+      setStatus('Merci de renseigner ton prénom et ton nom.', true);
+      return;
+    }
+    const fullName = prenom + ' ' + nom;
+    const key = slugify(fullName);
+
+    btnYes.disabled = true;
+    btnNo.disabled = true;
+    setStatus('Enregistrement...');
+    try{
+      const guests = await loadGuests();
+      const filtered = guests.filter(g => g.key !== key);
+      filtered.push({ key, name: fullName, status, ts: Date.now() });
+      const ok = await saveGuests(filtered);
+      if(!ok){
+        setStatus("Oups, l'enregistrement a échoué. Réessaie.", true);
+      } else {
+        renderGuests(filtered);
+        setStatus(status === 'yes'
+          ? `Merci ${prenom}, on t'attend le 24 octobre !`
+          : `Merci de nous avoir prévenus, ${prenom}.`);
+      }
+    }catch(e){
+      setStatus("Oups, une erreur est survenue. Réessaie.", true);
+    }finally{
+      btnYes.disabled = false;
+      btnNo.disabled = false;
+    }
+  }
+
+  btnYes.addEventListener('click', () => submitRsvp('yes'));
+  btnNo.addEventListener('click', () => submitRsvp('no'));
+
+  (async function init(){
+    if(!CONFIGURED){
+      setStatus("Configuration en attente (voir commentaire dans le code).", true);
+      return;
+    }
+    const guests = await loadGuests();
+    renderGuests(guests);
+  })();
+</script>
+</body>
+</html>
