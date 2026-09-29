@@ -97,6 +97,13 @@
     font-family:'Quicksand';font-weight:500;font-size:15px;
     color:var(--olive);margin-top:6px;
   }
+  .swatches{
+    display:flex;justify-content:center;gap:10px;margin-top:16px;
+  }
+  .swatch{
+    width:30px;height:30px;border-radius:50%;
+    box-shadow:0 0 0 3px var(--cream), 0 0 0 4px rgba(69,79,49,0.25);
+  }
 
   /* ---- RSVP ---- */
   .rsvp-form{
@@ -202,18 +209,17 @@
     <div class="divider"><div class="line" style="background:var(--olive-pale);"></div></div>
 
     <section class="block">
-      <h2>Le programme</h2>
-      <div class="teaser">
-        <div class="big">Ça se prépare...</div>
-        <div class="small">Le détail de l'après-midi arrive très bientôt — revenez faire un tour par ici !</div>
-      </div>
-    </section>
-
-    <section class="block" style="padding-top:0;">
       <h2>Le thème</h2>
       <div class="teaser">
-        <div class="big">Surprise !</div>
-        <div class="small">Le thème sera annoncé prochainement. Restez curieux 👀</div>
+        <div class="big">Tout en vert !</div>
+        <div class="small">On vous attend parés de vos plus belles nuances de vert — laissez parler votre créativité</div>
+        <div class="swatches">
+          <span class="swatch" style="background:#CBCFA9;"></span>
+          <span class="swatch" style="background:#828A5C;"></span>
+          <span class="swatch" style="background:#6B7048;"></span>
+          <span class="swatch" style="background:#454F31;"></span>
+          <span class="swatch" style="background:#2F5233;"></span>
+        </div>
       </div>
     </section>
 
@@ -276,6 +282,7 @@
     try{
       const res = await fetch(BASE_URL);
       if(!res.ok){
+        // Le panier n'existe pas encore : on le crée vide.
         await fetch(BASE_URL, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
