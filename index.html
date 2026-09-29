@@ -202,7 +202,7 @@
       </div>
       <div class="info-item">
         <div class="label">OÙ</div>
-        <div class="value" style="font-size:15px;line-height:1.3;">128 Chemin de Lapuyade<br>Peyrehorade</div>
+        <div class="value">128 Chemin de Lapuyade, Peyrehorade</div>
       </div>
     </div>
 
@@ -281,7 +281,6 @@
     try{
       const res = await fetch(BASE_URL);
       if(!res.ok){
-        // Le panier n'existe pas encore : on le crée vide.
         await fetch(BASE_URL, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
